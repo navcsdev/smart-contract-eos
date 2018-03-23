@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "valarray": "cpp",
+        "locale": "cpp",
+        "system_error": "cpp",
+        "*.ipp": "cpp",
+        "algorithm": "cpp",
+        "typeinfo": "cpp",
+        "__bit_reference": "cpp",
+        "__string": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "set": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

@@ -1,0 +1,24 @@
+{
+  "types": [],
+  "structs": [{
+      "name": "move",
+      "base": "",
+      "fields": [
+        {"name":"address", "type":"string"}
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "move",
+      "type": "move"
+    }
+  ],
+  "tables": [{
+        "name": "user_infos",
+        "type": "user_info",
+        "index_type": "i64",
+        "key_names" : ["address"],
+        "key_types" : ["string"]
+      }
+  ]
+}
