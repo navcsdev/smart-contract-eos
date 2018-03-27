@@ -1,0 +1,22 @@
+{
+  "types": [{
+      "new_type_name": "account_name",
+      "type": "name"
+    }
+  ],
+  "structs": [{
+      "name": "call",
+      "base": "",
+      "fields": [
+        {"name":"caller", "type":"account_name"}
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "call",
+      "type": "call"
+    }
+  ],
+  "tables": [
+  ]
+}

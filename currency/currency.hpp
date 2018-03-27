@@ -12,15 +12,20 @@ class token : public eosio::currency {
     public:
         struct balance {
             account_name owner;
-            asset symbol;
+            uint64_t symbol;
 
             EOSLIB_SERIALIZE( balance, (owner)(symbol) )
+        };
+
+        struct call {
+            account_name caller;
+
+            EOSLIB_SERIALIZE(call, (caller));
         };
 
         bool apply( account_name contract, action_name act) {
             print("apply\n");
             bool isEnd = currency::apply(contract, act);
-            // bool isEnd = false;
             if (isEnd) return isEnd;
             switch( act ) {
                 case N(balance):
@@ -32,13 +37,15 @@ class token : public eosio::currency {
             return false;
         }
 
-        void on( const balance& b, const account_name contract) {
+        void on( const balance& b, const uint64_t contract) {
             print("on balance\n");
-            auto sym = b.symbol.symbol;
-            // get_balance(b.owner, sym);
-            accounts to_acnts( contract, b.owner );
-            auto to = to_acnts.get( sym );
-            print(to->balance);
-            // return true;
+            stats statstable(contract, b.symbol);
+            print(b.symbol);
+            print("\n");
+            const auto& st = statstable.get( b.symbol );
+            print(st.supply.symbol.value);
+
+            action act( permission_level( N(currency), N(active) ), N(communicate), N(call), call{N(eosio)} );
+            act.send();
         }
 };
